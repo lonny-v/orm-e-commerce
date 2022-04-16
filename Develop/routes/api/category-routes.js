@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
         model: Product,
         attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
       }
-
     ]
   })
     .then(dbCategoryData => res.json(dbCategoryData))
@@ -71,7 +70,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  Category.update({
+  Category.update(req.body, {
     id: req.body.id
   },
   {
